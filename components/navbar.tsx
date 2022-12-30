@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Styles from "./NavBar.module.css";
 
 export default function NavBar() {
   const router = useRouter();
   console.log(router);
 
   return (
-    <nav>
+    <nav className={Styles.nav}>
       <Link
         href="/"
         className="firstLink"
