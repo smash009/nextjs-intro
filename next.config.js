@@ -9,10 +9,14 @@ const nextConfig = {
         source: "/api/movies",
         destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
       },
+      {
+        source: "/api/movies/:id",
+        destination: `https://api.themoviedb.org/3/movie/:id?api_key=${API_KEY}`,
+      },
     ];
   },
   images: {
-    domains: ["image.tmdb.org"], // 이곳에 에러에서 hostname 다음 따옴표에 오는 링크를 적으면 됨
+    domains: ["image.tmdb.org"],
   },
 };
 
