@@ -1,8 +1,23 @@
 import Link from "next/link";
 import Seo from "../components/Seo";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function Home({ results }: any) {
+  const router = useRouter();
+  const onClick = (id: any, title: any) => {
+    router.push(
+      {
+        pathname: `/movies/%{id}`,
+        query: {
+          id,
+          title,
+        },
+      },
+      `/movies/${id}`
+    );
+  };
+
   return (
     <>
       <div className="container">
@@ -13,14 +28,17 @@ export default function Home({ results }: any) {
               href={{
                 pathname: `/movies/${movie.id}`,
                 query: {
-                  // id: movie.id,
-                  // title: movie.title,
+                  id: movie.id,
+                  title: movie.title,
                 },
               }}
-              as={`/movies/${movie.title}`}
+              // as={`/movies/${movie.title}`}
               key={movie.id}
             >
-              <div className="movie">
+              <div
+                className="movie"
+                onClick={() => onClick(movie.id, movie.original_title)}
+              >
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={`${movie.original_title}`}
