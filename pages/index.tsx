@@ -9,7 +9,17 @@ export default function Home({ results }: any) {
         <Seo title="Home" />
         {results?.map((movie: any) => {
           return (
-            <Link href={`/movies/${movie.id}`} key={movie.id}>
+            <Link
+              href={{
+                pathname: `/movies/${movie.id}`,
+                query: {
+                  // id: movie.id,
+                  // title: movie.title,
+                },
+              }}
+              as={`/movies/${movie.title}`}
+              key={movie.id}
+            >
               <div className="movie">
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
