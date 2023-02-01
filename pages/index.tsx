@@ -8,8 +8,9 @@ export default function Home({ results }: any) {
   const onClick = (id: any, title: any) => {
     router.push(
       {
-        pathname: `/movies/%{id}`,
+        pathname: `/movies/${id}`,
         query: {
+          id,
           title,
         },
       },
