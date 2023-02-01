@@ -1,3 +1,3 @@
 # NextJS Introduction
 
-- Nest.JS 학습용
+- Next.JS 학습용

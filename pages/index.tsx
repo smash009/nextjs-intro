@@ -10,7 +10,6 @@ export default function Home({ results }: any) {
       {
         pathname: `/movies/%{id}`,
         query: {
-          id,
           title,
         },
       },
@@ -24,31 +23,32 @@ export default function Home({ results }: any) {
         <Seo title="Home" />
         {results?.map((movie: any) => {
           return (
-            <Link
-              href={{
-                pathname: `/movies/${movie.id}`,
-                query: {
-                  id: movie.id,
-                  title: movie.title,
-                },
-              }}
-              // as={`/movies/${movie.title}`}
+            <div
               key={movie.id}
+              className="movie"
+              onClick={() => onClick(movie.id, movie.original_title)}
             >
-              <div
-                className="movie"
-                onClick={() => onClick(movie.id, movie.original_title)}
-              >
-                <Image
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={`${movie.original_title}`}
-                  width={220}
-                  height={270}
-                  className="movie_poster"
-                />
-                <h4>{movie.original_title}</h4>
-              </div>
-            </Link>
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={`${movie.original_title}`}
+                width={220}
+                height={270}
+                className="movie_poster"
+              />
+              <h4>
+                <Link
+                  href={{
+                    pathname: `/movies/${movie.id}`,
+                    query: {
+                      title: movie.original_title,
+                    },
+                  }}
+                  as={`/movies/${movie.title}`}
+                >
+                  {movie.original_title}
+                </Link>
+              </h4>
+            </div>
           );
         })}
       </div>
@@ -90,7 +90,7 @@ export default function Home({ results }: any) {
 }
 
 export async function getServerSideProps() {
-  const response = await fetch(`http://localhost:3001/api/movies`);
+  const response = await fetch(`http://localhost:3003/api/movies`);
   const { results } = await response.json();
 
   return {
