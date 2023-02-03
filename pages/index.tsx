@@ -6,16 +6,7 @@ import { useRouter } from "next/router";
 export default function Home({ results }: any) {
   const router = useRouter();
   const onClick = (id: any, title: any) => {
-    router.push(
-      {
-        pathname: `/movies/${id}`,
-        query: {
-          id,
-          title,
-        },
-      },
-      `/movies/${id}` // url 마스킹
-    );
+    router.push(`/movies/${title}/${id}`);
   };
 
   return (
@@ -36,19 +27,7 @@ export default function Home({ results }: any) {
                 height={270}
                 className="movie_poster"
               />
-              <h4>
-                <Link
-                  href={{
-                    pathname: `/movies/${movie.id}`,
-                    query: {
-                      title: movie.original_title,
-                    },
-                  }}
-                  as={`/movies/${movie.id}`}
-                >
-                  {movie.original_title}
-                </Link>
-              </h4>
+              <h4>{movie.original_title}</h4>
             </div>
           );
         })}
