@@ -14,7 +14,7 @@ export default function Home({ results }: any) {
           title,
         },
       },
-      `/movies/${id}`
+      `/movies/${id}` // url 마스킹
     );
   };
 
@@ -44,7 +44,7 @@ export default function Home({ results }: any) {
                       title: movie.original_title,
                     },
                   }}
-                  as={`/movies/${movie.title}`}
+                  as={`/movies/${movie.id}`}
                 >
                   {movie.original_title}
                 </Link>
@@ -91,7 +91,7 @@ export default function Home({ results }: any) {
 }
 
 export async function getServerSideProps() {
-  const response = await fetch(`http://localhost:3003/api/movies`);
+  const response = await fetch(`http://localhost:3000/api/movies`);
   const { results } = await response.json();
 
   return {
