@@ -45,16 +45,8 @@ export default function Home({ results }: any) {
           cursor: pointer;
         }
 
-         {
-          /* .movie_poster {
-          max-width: 100%;
-          border-radius: 12px;
-          transition: transform 0.2s ease-in-out;
-          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-        }
-        .movie:hover .movie_poster {
+        .movie:hover {
           transform: scale(1.05) translateY(-10px);
-        } */
         }
 
         .movie h4 {

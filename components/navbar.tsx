@@ -9,20 +9,22 @@ export default function NavBar() {
   return (
     <nav>
       <Image src="/vercel.svg" alt="Test Image" width={90} height={30} />
-      <Link
-        href="/"
-        legacyBehavior
-        className={router.pathname === "/" ? "active" : ""}
-      >
-        <a>Home</a>
-      </Link>
-      <Link
-        href="/about"
-        legacyBehavior
-        className={router.pathname === "/about" ? "active" : ""}
-      >
-        <a>About</a>
-      </Link>
+      <div className="linkWrap">
+        <Link
+          href="/"
+          legacyBehavior
+          className={router.pathname === "/" ? "active" : ""}
+        >
+          <a>Home</a>
+        </Link>
+        <Link
+          href="/about"
+          legacyBehavior
+          className={router.pathname === "/about" ? "active" : ""}
+        >
+          <a>About</a>
+        </Link>
+      </div>
       <style jsx>{`
         a {
           text-decoration: none;
@@ -44,9 +46,17 @@ export default function NavBar() {
           margin-bottom: 5px;
         }
 
+        .linkWrap {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+        }
+
         nav a {
+          width: 50%;
           font-weight: 600;
           font-size: 18px;
+          text-align: center;
         }
 
         .active {
